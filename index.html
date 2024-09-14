@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cofres Secretos</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Sacramento&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            padding: 20px;
+        }
+        h1 {
+            font-family: 'Sacramento', cursive;
+            color: #4a4a4a;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .cofre {
+            background-color: #fff;
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            margin: 10px;
+            width: 300px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        /* Colores personalizados para cada cofre */
+        #cofre1 {
+            background-color: #ffeb3b; /* Amarillo */
+        }
+        #cofre2 {
+            background-color: #f48fb1; /* Rosado */
+        }
+        #cofre3 {
+            background-color: #03a9f4; /* Celeste */
+        }
+        #cofre4 {
+            background-color: #9c27b0; /* Púrpura */
+        }
+        #cofre5 {
+            background-color: #8bc34a; /* Verde claro */
+        }
+        #cofre6 {
+            background-color: #f44336; /* Rojo */
+        }
+        .cofre:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .mensaje {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #d9534f;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        .cofre .mensaje.correcto {
+            color: #5cb85c;
+        }
+        .cofre .mensaje.incorrecto {
+            color: #d9534f;
+        }
+        .audio-player {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cofres Secretos</h1>
+
+    <div class="cofre" id="cofre1">
+        <h2>Cofre 1</h2>
+        <input type="password" id="contrasena1" placeholder="Introduce la contraseña">
+        <button onclick="abrirCofre(1)">Abrir Cofre</button>
+        <div id="mensaje1" class="mensaje"></div>
+        <audio id="audio1" class="audio-player" controls src="felidadd.m4a"></audio>
+    </div>
+
+    <div class="cofre" id="cofre2">
+        <h2>Cofre 2</h2>
+        <input type="password" id="contrasena2" placeholder="Introduce la contraseña">
+        <button onclick="abrirCofre(2)">Abrir Cofre</button>
+        <div id="mensaje2" class="mensaje"></div>
+        <audio id="audio2" class="audio-player" controls src="molesta.m4a"></audio>
+    </div>
+
+    <div class="cofre" id="cofre3">
+        <h2>Cofre 3</h2>
+        <input type="password" id="contrasena3" placeholder="Introduce la contraseña">
+        <button onclick="abrirCofre(3)">Abrir Cofre</button>
+        <div id="mensaje3" class="mensaje"></div>
+        <audio id="audio3" class="audio-player" controls src="triste_1.m4a"></audio>
+    </div>
+
+    <div class="cofre" id="cofre4">
+        <h2>Cofre 4</h2>
+        <input type="password" id="contrasena4" placeholder="Introduce la contraseña">
+        <button onclick="abrirCofre(4)">Abrir Cofre</button>
+        <div id="mensaje4" class="mensaje"></div>
+        <audio id="audio4" class="audio-player" controls src="Desmotivvvv.m4a"></audio>
+    </div>
+
+    <div class="cofre" id="cofre5">
+        <h2>Cofre 5</h2>
+        <input type="password" id="contrasena5" placeholder="Introduce la contraseña">
+        <button onclick="abrirCofre(5)">Abrir Cofre</button>
+        <div id="mensaje5" class="mensaje"></div>
+        <audio id="audio5" class="audio-player" controls src="preouuu.m4a"></audio>
+    </div>
+
+    <div class="cofre" id="cofre6">
+        <h2>Cofre 6</h2>
+        <input type="password" id="contrasena6" placeholder="Introduce la contraseña">
+        <button onclick="abrirCofre(6)">Abrir Cofre</button>
+        <div id="mensaje6" class="mensaje"></div>
+        <audio id="audio6" class="audio-player" controls src="raoneedvvvvv.m4a"></audio>
+    </div>
+
+    <script>
+        // Contraseñas y audios para cada cofre
+        const cofres = [
+            { contrasena: "HAPPYLOVES", audio: "audio1.mp3" },
+            { contrasena: "NOTEENOJES", audio: "audio2.mp3" },
+            { contrasena: "AQUITOYMOR", audio: "audio3.mp3" },
+            { contrasena: "SUEÑOPORTI", audio: "audio4.mp3" },
+            { contrasena: "CONTIGOYOP", audio: "audio5.mp3" },
+            { contrasena: "TECUBROYOP", audio: "audio6.mp3" }
+        ];
+
+        function abrirCofre(num) {
+            const cofreElement = document.getElementById(`cofre${num}`);
+            const contrasenaCorrecta = cofres[num - 1].contrasena;
+            const audio = document.getElementById(`audio${num}`);
+            const contrasenaUsuario = document.getElementById(`contrasena${num}`).value;
+            const mensaje = document.getElementById(`mensaje${num}`);
+
+            // Verificar la contraseña
+            if (contrasenaUsuario === contrasenaCorrecta) {
+                cofreElement.classList.add('abierto');
+                mensaje.innerHTML = '¡Contraseña correcta! El cofre se ha abierto.';
+                mensaje.classList.remove('incorrecto');
+                mensaje.classList.add('correcto');
+                audio.style.display = 'block';  // Mostrar el reproductor de audio
+                audio.load();  // Asegurarse de que el audio está listo para reproducir
+            } else {
+                mensaje.innerHTML = 'Contraseña incorrecta. Inténtalo de nuevo.';
+                mensaje.classList.remove('correcto');
+                mensaje.classList.add('incorrecto');
+                mensaje.style.opacity = '1'; // Asegurar que el mensaje sea visible
+                audio.style.display = 'none';  // Ocultar el reproductor de audio si la contraseña es incorrecta
+            }
+        }
+    </script>
+</body>
+</html>
